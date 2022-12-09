@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<table border="1" class="profile-table">
+         <tr><td valign="middle">
+             <li>Name: {{ current_user.get_name() }}</li>
+                   <div class="profile-ava"><img src="{{ url_for('userava') }}"></div>
+                   <div class="profile-load">
+                   <form action="{{url_for('upload')}}" method="POST" enctype="multipart/form-data">
+                            <input type="file" name="file">
+                            <input type="submit" value="Upload">
+                   </form> 
+                   </div>
+</table>
+{% endblock %}

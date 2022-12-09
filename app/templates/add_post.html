@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{msg}}</div>
+{% endfor %}
+<form action="{{url_for('add_resume')}}" method="post" class="form-contact">
+<p><label>Name: </label> <input type="text" name="name" value=""
+                                        requied />
+<p><label>Surname: </label> <input type="text" name="surname" value=""
+                                   requied />
+<p><label>Age: </label> <input type="text" name="age" value=""
+                                   requied />
+<p><label>Other: <textarea name="other" rows=14 cols=70></textarea>
+<p><input type="submit" value="Добавить" />
+</form>
+{% endblock %}
